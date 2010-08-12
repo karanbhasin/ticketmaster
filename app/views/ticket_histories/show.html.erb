@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ticket:</b>
+  <%= @ticket_history.ticket_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @ticket_history.user_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @ticket_history.comment %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%= @ticket_history.action %>
+</p>
+
+<p>
+  <b>Extra info:</b>
+  <%= @ticket_history.extra_info %>
+</p>
+
+
+<%= link_to 'Edit', edit_ticket_history_path(@ticket_history) %> |
+<%= link_to 'Back', ticket_histories_path %>

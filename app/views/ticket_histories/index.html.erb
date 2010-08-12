@@ -1,0 +1,31 @@
+<h1>Listing ticket_histories</h1>
+
+<table>
+  <tr>
+    <th>Ticket</th>
+    <th>User</th>
+    <th>Comment</th>
+    <th>Action</th>
+    <th>Extra info</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ticket_histories.each do |ticket_history| %>
+  <tr>
+    <td><%= ticket_history.ticket_id %></td>
+    <td><%= ticket_history.user_id %></td>
+    <td><%= ticket_history.comment %></td>
+    <td><%= ticket_history.action %></td>
+    <td><%= ticket_history.extra_info %></td>
+    <td><%= link_to 'Show', ticket_history %></td>
+    <td><%= link_to 'Edit', edit_ticket_history_path(ticket_history) %></td>
+    <td><%= link_to 'Destroy', ticket_history, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ticket history', new_ticket_history_path %>

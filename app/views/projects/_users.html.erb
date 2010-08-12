@@ -1,0 +1,6 @@
+ <% for user in @users %>
+    <div>
+      <%= check_box_tag "project[user_ids][]", user.id, @project.users.include?(user) %>
+      <%= user.email %>
+    </div>
+  <% end %>

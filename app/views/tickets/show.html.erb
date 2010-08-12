@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @ticket.title %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Created by user:</b>
+  <%= @users_hash[@ticket.created_by_user_id] %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= get_key(ticket_status, @ticket.status) %>
+</p>
+
+<p>
+  <b>Assigned to user:</b>
+  <%= @users_hash[@ticket.assigned_to_user_id] %>
+</p>
+
+<p>
+  <b>Priority:</b>
+  <%= get_key(priorities, @ticket.priority) %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @ticket.description %>
+</p>
+
+<%= render 'ticketHistory' %>
+
+<%= link_to 'Edit', edit_project_ticket_path(@project, @ticket) %> |
+
+<%#= link_to 'Back', project_tickets_path(@project) %> 
+<%= link_to 'Back', @project %>

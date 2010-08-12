@@ -1,0 +1,35 @@
+<table>
+  <tr>
+    <th>Comment</th>
+    <th>Action</th>
+    <th>Extra info</th>
+  </tr>
+<% @ticketHistories.each do |ticketHistory| %>
+  <tr>
+   <td><%= ticketHistory.comment %></td>
+   <td><%= ticketHistory.action %></td>
+   <td><%= ticketHistory.extra_info %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<%= form_for(@ticket_history, :url => ticket_histories_path) do |f| %>
+<%=  hidden_field(:ticket_history, :ticket_id)%>
+<div class="field">
+   <%= f.label :comment %><br />
+   <%= f.text_field :comment %>
+</div>
+
+<div class="field">
+   <%= f.label :action %><br />
+   <%= select(:ticket_history, :action, @actions) %>
+</div>
+<div class="field">
+    <%= f.label :assigned_to_user_id %><br />
+    <%= select_tag(:user_id, options_for_select(@users_array)) %>
+</div>
+ <div class="actions">
+    <%= f.submit %>
+  </div>
+<%end%>

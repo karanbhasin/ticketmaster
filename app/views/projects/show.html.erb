@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Is enabled:</b>
+  <%= @project.is_enabled %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @project.end_date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description %>
+</p>
+
+<table>
+  <tr>
+    <th>title</th>
+    <th>Created by</th>
+    <th>Created at</th>
+    <th>Status</th>
+    <th>Assigned to</th>
+    <th>Priority</th>
+    <th></th>
+  </tr>
+<% @project.tickets.each do |ticket| %>
+  <tr>
+   <td><%= ticket.title %></td>
+   <td><%= @users_hash[ticket.created_by_user_id] %></td>
+   <td><%= date_format(ticket.created_at) %></td>
+   <td><%= get_key(ticket_status, ticket.status) %></td>
+   <td><%= @users_hash[ticket.assigned_to_user_id] %></td>
+   <td><%= get_key(priorities, @ticket.priority) %></td>
+   <td><%= link_to 'Show', project_ticket_path(@project, ticket) %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'New Ticket', new_project_ticket_path(@project) %> 
